@@ -10,8 +10,8 @@
 <body>
     <h1>Tareas de usuario </h1>
     <!-- <h2 th:if="${session.usuariosession}!=null"th:text="${session.usuariosession.nombre}"></h2> -->
-    <h2 th:text="${usuario.nombre}"></h2>
-    <p th:if="${error!= null}" th:text="${error}" style="color:red;"></p>
+    <!--h2 th:text="${usuario.nombre}"></h2>-->
+    <!--<p th:if="${error!= null}" th:text="${error}" style="color:red;"></p>-->
 
     <table id="tablaGeneral">
         <thead>
@@ -26,18 +26,18 @@
         </thead>
         <tbody th:each="tarea: ${tareas}">
             <tr>
-                <th scope="row" th:text="${tarea.id}">1</th>
-                <td th:text="${tarea.nombre}">2</td>
-                <td th:text="${tarea.descripcion}">3</td>
-                <td th:text="${tarea.fechaCreacion}">4</td>
-                <td th:text="${tarea.fechaFinal">5</td>
+                <th scope="row" th:text="${tarea.id}"></th>
+                <td th:text="${tarea.nombre}"></td>
+                <td th:text="${tarea.descripcion}"></td>
+                <td th:text="${tarea.fechaCreacion}"></td>
+                <td th:text="${tarea.fechaFinal"></td>
                 <td >
                     <i th:if="${tarea.cumplida}">
                         <img src="/img/tilde verde.png" alt="Cumplida">
                     </i>
                     <i th:unless="${tarea.cumplida}">
                         <img src="/img/equis roja.png" alt="Cumplida">
-                    </i>6
+                    </i>
                 </td>
             </tr>
         </tbody>

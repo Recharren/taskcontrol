@@ -9,6 +9,7 @@ import proyecto.tareas.repositorios.TareaRepositorio;
 import proyecto.tareas.repositorios.UsuarioRepositorio;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class TareaServicio {
@@ -33,8 +34,17 @@ public class TareaServicio {
         tareaRepositorio.save(tarea);
     }
 
-    public void verTareasPorIdUsuario(Long id) {
-        tareaRepositorio.verTareasPorIdUsuario(id);
+    public List<Tarea> verTareasPorIdUsuario(Long id) throws MiExcepcion {
+        List<Tarea> tareas = null;
+        try {
+            tareas = tareaRepositorio.verTareasPorIdUsuario(id);
+        } catch (Exception ex){
+            throw new MiExcepcion("ERROR: Al querer buscar tareas por usuario");
+        }
+        if (!tareas.isEmpty()){
+            return tareas;
+        } else throw new MiExcepcion("ERROR: No se encontraron tareas para este usuario.");
+
     }
 
    /* public void crearTarea(Long usuarioId,String nombre, String descripcion, Date fechaFinal) throws MiExcepcion {

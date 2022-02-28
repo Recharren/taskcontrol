@@ -38,7 +38,13 @@ public class TareaControlador {
 
     @GetMapping("/verTareas")
     public String verTareas (ModelMap modelo, @ModelAttribute Tarea tarea){
-        tareaServicio.verTareasPorIdUsuario(tarea.getId());
+       try {
+           List<Tarea> tareas = tareaServicio.verTareasPorIdUsuario(tarea.getUsuario().getId());
+           modelo.put("tareas",tareas);
+       } catch (MiExcepcion ex){
+           String error = ex.getMessage();
+           modelo.put("error", error);
+       }
         return "verTareas.html";
     }
 

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!--     <nav th:replace="fragments/nav :: nav"></nav>-->
+    <h1>Hola amigotes</h1>
+    <a href="/crearUsuario">Crear un usuario nuevo</a> <br>
+    <a href="/crearTarea">Crear una tarea nueva</a>
+    
+    <!-- <img src="img/tildeVerde.png" alt=""> -->
+    
+    <form th:object="${tarea}" action="/verTareas" method="get">
+        <select th:field="*{usuario}" id="" required>
+            <option th:each="usuario: ${usuarios}" th:value="${usuario.id}" th:text="${usuario.nombre}"></option>
+        </select>
+        <button type="submit"><a href="/verTareas">Ver tareas</a></button>
+    </form>
+    <button ><a href="/">IR A INICIO</a></button>
+    <script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Tarea</title>
+</head>
+<body>
+    <h1>Formulario para crear una nueva tarea.</h1>
+    <form th:object="${tarea}" th:action="@{/registrarTarea}" method="post">
+
+        <label for="usuario">Seleccione un usuario</label>
+        <select th:field="*{usuario}" required>
+            <option th:each="usuario: ${usuarios}" th:value="${usuario.id}" th:text="${usuario.nombre}"></option>
+        </select> <br>
+
+        <label for="nombre">Ingrese el nombre de la tarea</label>
+        <input type="text" th:field="*{nombre}" required><br>
+
+        <label for="descripcion">Ingrese la descripcion</label>
+        <input type="text" th:field="*{descripcion}"><br>
+
+        <label for="fechaFinal">Ingrese la fecha limite</label>
+        <input type="date" th:field="*{fechaFinal}"><br>
+
+        <button type="submit" >Confirmar</button>
+    </form>
+    <button ><a href="/">IR A INICIO</a></button>
+</body>
+</html>

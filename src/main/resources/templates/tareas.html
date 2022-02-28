@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas de usuario</title>
+    <link rel="stylesheet" href="../static/tareas.css">
+</head>
+<body>
+    <h1>Tareas de usuario </h1>
+    <!-- <h2 th:if="${session.usuariosession}!=null"th:text="${session.usuariosession.nombre}"></h2> -->
+    <h2 th:text="${usuario.nombre}"></h2>
+    <p th:if="${error!= null}" th:text="${error}" style="color:red;"></p>
+
+    <table id="tablaGeneral">
+        <thead>
+            <tr>
+                <th scope="col">#id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Creación</th>
+                <th scope="col">Fecha límite</th>
+                <th scope="col">Cumplida?</th>
+            </tr>
+        </thead>
+        <tbody th:each="tarea: ${tareas}">
+            <tr>
+                <th scope="row" th:text="${tarea.id}">1</th>
+                <td th:text="${tarea.nombre}">2</td>
+                <td th:text="${tarea.descripcion}">3</td>
+                <td th:text="${tarea.fechaCreacion}">4</td>
+                <td th:text="${tarea.fechaFinal">5</td>
+                <td >
+                    <i th:if="${tarea.cumplida}">
+                        <img src="/img/tilde verde.png" alt="Cumplida">
+                    </i>
+                    <i th:unless="${tarea.cumplida}">
+                        <img src="/img/equis roja.png" alt="Cumplida">
+                    </i>6
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

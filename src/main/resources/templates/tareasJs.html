@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tareas de usuario</title>
-    <link rel="stylesheet" href="/tareas.css">
+    <link rel="stylesheet" href="../static/tareas.css">
     <!-- <link rel="stylesheet" href="../static/tareas.css"> -->
 </head>
 <body>
@@ -28,15 +28,15 @@
         <tbody th:each="tarea: ${tareas}">
             <tr>
                 <th scope="row" th:text="${tarea.id}">123</th>
-                <td th:text="${tarea.nombre}">Comprar gaseosa</td>
-                <td th:text="${tarea.descripcion}">Ir al supermercado y traer todo tipo de gaseosas de sabor naranja y despues pasar por la carniceria</td>
-                <td th:text="${tarea.fechaCreacion}">10/02/2021</td>
-                <td th:text="${tarea.fechaFinal}">20/03/2022</td>
+                <td >Comprar gaseosa</td>
+                <td >Ir al supermercado por jugo y pasar por la carniceria</td>
+                <td >10/02/2021</td>
+                <td >20/03/2022</td>
                 <td >
-                    <i th:if="${tarea.cumplida}">
+                    <i>
                         <img class="cumplida" src="/img/tildeVerde.png" alt="Cumplida"> 
                     </i>
-                    <i th:unless="${tarea.cumplida}">
+                    <i>
                         <img class="cumplida" src="/img/equisRoja.png" alt="NoCumplida">
                     </i>
                 </td>

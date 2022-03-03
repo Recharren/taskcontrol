@@ -15,13 +15,27 @@
     
     <!-- <img src="img/tildeVerde.png" alt=""> -->
     
-    <form th:object="${tarea}" action="/verTareas" method="get">
-        <select th:field="*{usuario}" id="" required>
+    <form th:action="@{/verTareas}" method="get">
+        <select name="id" required>
             <option th:each="usuario: ${usuarios}" th:value="${usuario.id}" th:text="${usuario.nombre}"></option>
         </select>
-        <button type="submit"><a href="/verTareas">Ver tareas</a></button>
+        <button type="submit">Ver tareas</button>
     </form>
+
+
     <button ><a href="/">IR A INICIO</a></button>
-    <script src="js/index.js"></script>
+    <button id="btn">probar js</button>
+
+    <h3>---------------------------------------------------------------</h3>
+    <h2>LOGIN</h2>
+    <form action="/logincheck" method="post">
+        <label for="username" class="label">Ingrese su email</label>
+        <input type="email" name="username" placeholder="usuario@ejemplo.com"> <br><br>
+        <label for="password" class="label">Ingrese su clave</label>
+        <input type="password" name="password" placeholder="Contraseña"><br><br>
+        <button type="submit">Iniciar sesión</button>
+    </form>
+    <!-- <script src="js/index.js"></script> -->
+    <script src="../static/js/index.js"></script>
 </body>
 </html>

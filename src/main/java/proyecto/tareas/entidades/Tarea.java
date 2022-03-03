@@ -4,6 +4,7 @@ package proyecto.tareas.entidades;
 import java.util.Date;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -19,9 +20,13 @@ public class Tarea {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaCreacion, fechaFinal;
 
-    private String nombre,descripcion,nota;
+    private String nombre,nota;
+
+    @Lob
+    private String descripcion;
 
     @ManyToOne
+    @JsonIgnoreProperties(value = "tareas")
     private Usuario usuario;
 
     private boolean cumplida;

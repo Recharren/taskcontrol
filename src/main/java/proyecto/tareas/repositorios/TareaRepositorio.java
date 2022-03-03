@@ -13,4 +13,10 @@ public interface TareaRepositorio extends JpaRepository<Tarea, Long> {
 
     @Query(value = "SELECT t FROM Tarea t WHERE t.usuario.id = :idUsuario")
     public List<Tarea> verTareasPorIdUsuario(@Param("idUsuario") Long idUsuario);
+
+    @Query(value = "SELECT t FROM Tarea t WHERE t.usuario.id = :idUsuario AND t.cumplida = TRUE")
+    public List<Tarea> verTareasCumplidasPorIdUsuario(@Param("idUsuario") Long idUsuario);
+
+    @Query(value = "SELECT t FROM Tarea t WHERE t.usuario.id = :idUsuario AND t.cumplida = FALSE")
+    public List<Tarea> verTareasNoCumplidasPorIdUsuario(@Param("idUsuario") Long idUsuario);
 }

@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import proyecto.tareas.Excepciones.MiExcepcion;
 import proyecto.tareas.entidades.Tarea;
 import proyecto.tareas.entidades.Usuario;
@@ -37,9 +34,11 @@ public class TareaControlador {
     }
 
     @GetMapping("/verTareas")
-    public String verTareas (ModelMap modelo, @ModelAttribute Tarea tarea){
+    public String verTareas (ModelMap modelo, @RequestParam Long id) {
        try {
-           List<Tarea> tareas = tareaServicio.verTareasPorIdUsuario(tarea.getUsuario().getId());
+           /*List<Tarea> tareas = tareaServicio.verTareasPorIdUsuario(tarea.getUsuario().getId());*/
+           System.out.println("EL NUMERO ID ES: "+id);
+           List<Tarea> tareas = tareaServicio.verTareasPorIdUsuario(id);
            modelo.put("tareas",tareas);
        } catch (MiExcepcion ex){
            String error = ex.getMessage();

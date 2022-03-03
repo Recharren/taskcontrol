@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import proyecto.tareas.Enums.Rol;
 
 @Entity
@@ -27,6 +28,7 @@ public class Usuario {
     private Integer cantidadTareas;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "usuario")
+    @JsonIgnoreProperties(value = "usuario")
     private List<Tarea> tareas;
 
     public Long getId() {

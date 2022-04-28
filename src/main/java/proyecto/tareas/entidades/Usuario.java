@@ -1,35 +1,51 @@
 
 package proyecto.tareas.entidades;
 
+import java.io.Serializable;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import proyecto.tareas.Enums.Rol;
 
+
 @Entity
-public class Usuario {
+public class Usuario implements Serializable {
     
     @Id     
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nombre, apellido, dni, clave;
+    private String nombre, apellido, clave, puesto;
+    private Integer dni;
+
+    @Column(unique = true)
+    private String email;
+
+    private boolean alta; // Cuando se elimina un usuario lo que en realidad hacemos es darlo de baja, pero su informacion se sigue conservando en la BD.
+
+    @OneToOne
+    private Foto foto; // un usuario puede tener solo una foto en particular
 
     @Enumerated(EnumType.STRING)
-    private Rol rol;
+    private Rol rol; // El rol puede ser LIDER (de empresa) o USUARIO (empleado de empresa existente)
 
-    private Integer cantidadTareas;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    private Integer cantidadTareas, tareasCumplidas;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "usuario")
-    @JsonIgnoreProperties(value = "usuario")
-    private List<Tarea> tareas;
+    private List<Tarea> tareas; // Un usuario puede tener multiples tareas asignadas
+
+    @ManyToOne
+    private Empresa empresa; // Muchos usuarios pueden compartir la misma empresa
+
+    //----------------------------- GETTERS Y SETTERS ----------------------------------
 
     public Long getId() {
         return id;
@@ -55,11 +71,11 @@ public class Usuario {
         this.apellido = apellido;
     }
 
-    public String getDni() {
+    public Integer getDni() {
         return dni;
     }
 
-    public void setDni(String dni) {
+    public void setDni(Integer dni) {
         this.dni = dni;
     }
 
@@ -69,6 +85,30 @@ public class Usuario {
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    public String getPuesto() {
+        return puesto;
+    }
+
+    public void setPuesto(String puesto) {
+        this.puesto = puesto;
+    }
+
+    public boolean isAlta() {
+        return alta;
+    }
+
+    public void setAlta(boolean alta) {
+        this.alta = alta;
+    }
+
+    public Foto getFoto() {
+        return foto;
+    }
+
+    public void setFoto(Foto foto) {
+        this.foto = foto;
     }
 
     public Rol getRol() {
@@ -87,11 +127,27 @@ public class Usuario {
         this.cantidadTareas = cantidadTareas;
     }
 
+    public Integer getTareasCumplidas() {
+        return tareasCumplidas;
+    }
+
+    public void setTareasCumplidas(Integer tareasCumplidas) {
+        this.tareasCumplidas = tareasCumplidas;
+    }
+
     public List<Tarea> getTareas() {
         return tareas;
     }
 
     public void setTareas(List<Tarea> tareas) {
         this.tareas = tareas;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 }

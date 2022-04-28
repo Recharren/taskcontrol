@@ -4,38 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tareas</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>TaskControl</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-<!--     <nav th:replace="fragments/nav :: nav"></nav>-->
-    <h1>Hola amigotes</h1>
-    <a href="/crearUsuario">Crear un usuario nuevo</a> <br>
-    <a href="/crearTarea">Crear una tarea nueva</a>
     
-    <!-- <img src="img/tildeVerde.png" alt=""> -->
+    <div class="portada">
+        <h1>TaskControl</h1>
+        <p>Crea tu equipo y delega tareas para cada miembro. Podes hacer el seguimiento de las tareas asignadas.</p>
+        <h3 th:if="${error!= null}" th:text="${error}" style="color:rgb(171, 52, 5);"></h3>
+        <h3 class="mensaje" th:if="${mensaje!= null}" th:text="${mensaje}"></h3>
+    </div>
     
-    <form th:action="@{/verTareas}" method="get">
-        <select name="id" required>
-            <option th:each="usuario: ${usuarios}" th:value="${usuario.id}" th:text="${usuario.nombre}"></option>
-        </select>
-        <button type="submit">Ver tareas</button>
-    </form>
+    <div class="login">
+        <div class="form">
+            <h2>Inicia sesión</h2>
+                <form action="/logincheck" method="post">
+                <label for="username" class="label">Ingrese su email</label>
+                <input type="email" name="username" placeholder="usuario@ejemplo.com"> <br><br>
+                <label for="password" class="label">Ingrese su clave</label>
+                <input type="password" name="password" placeholder="Contraseña"><br><br>
+                <button type="submit" id="btnLogin">Iniciar sesión</button>
+            </form>
+            <a id="registrate" href="/crearUsuarioLider">Registrate</a>
+        </div>
+    </div>
+    
+    
 
-
-    <button ><a href="/">IR A INICIO</a></button>
-    <button id="btn">probar js</button>
-
-    <h3>---------------------------------------------------------------</h3>
-    <h2>LOGIN</h2>
-    <form action="/logincheck" method="post">
-        <label for="username" class="label">Ingrese su email</label>
-        <input type="email" name="username" placeholder="usuario@ejemplo.com"> <br><br>
-        <label for="password" class="label">Ingrese su clave</label>
-        <input type="password" name="password" placeholder="Contraseña"><br><br>
-        <button type="submit">Iniciar sesión</button>
-    </form>
-    <!-- <script src="js/index.js"></script> -->
-    <script src="../static/js/index.js"></script>
+   
 </body>
 </html>

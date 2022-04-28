@@ -27,9 +27,11 @@ public class Tarea {
 
     @ManyToOne
     @JsonIgnoreProperties(value = "tareas")
-    private Usuario usuario;
+    private Usuario usuario; // Muchas tareas pueden tener un mismo y unico usuario
 
     private boolean cumplida;
+
+    //----------------------------- GETTERS Y SETTERS ----------------------------------
 
     public Long getId() {
         return id;

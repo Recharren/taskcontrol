@@ -20,11 +20,11 @@ public class Security extends WebSecurityConfigurerAdapter {
                         "/**").permitAll()
                 .and().
                 formLogin()
-                .loginPage("/login") // Controlador a referenciar para loguear Usuario
+                .loginPage("/") // Controlador a referenciar para loguear Usuario
                 .loginProcessingUrl("/logincheck") // URL de chequeo de los parametros recibidos.
                 .usernameParameter("username") // nombre de usuario necesario para el logueo
                 .passwordParameter("password") // contraseña de usuario necesaria para el logueo
-                .defaultSuccessUrl("/") // URL a la que se dirige cuando el logueo es exitoso.
+                .defaultSuccessUrl("/inicio") // URL a la que se dirige cuando el logueo es exitoso.
                 .permitAll()
                 .and().logout()
                 .logoutUrl("/logout") // URL para generar el deslogueo.

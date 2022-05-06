@@ -154,8 +154,8 @@ public class UsuarioServicio implements UserDetailsService {
             throw new MiExcepcion("El campo 'dni' debe tener minimo 6 caracteres y menos de 10.");
         }
 
-        if (email.isEmpty() || email == null){
-            throw new MiExcepcion("El campo 'email' no puede estar vacío");
+        if(usuarioRepositorio.obtenerUsuarioPorEmail(email)!=null){
+            throw new MiExcepcion("ERROR: El email ya existe en la Base de Datos.");
         }
 
         if (!clave.equals(repetirClave) || clave.length()<3){

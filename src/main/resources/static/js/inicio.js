@@ -195,7 +195,7 @@ function asignarClickAcciones(){ // funcion para reasignar las acciones a cada b
     }
     
 }
-//-----------------------------------
+//-----------------------------------AMPLIAR TAREA -----------------------
 
 async function ampliarTarea(idTareaSeleccionada){
     await fetch ("http://localhost:8080/tareaRest/tarea/"+idTareaSeleccionada)
@@ -279,20 +279,3 @@ async function restringirUsuario(idSesion){
 
 //--------------------------------
 
-/* async function ampliarTarea(idTareaSeleccionada){
-    await fetch ("http://localhost:8080/tareaRest/tarea/"+idTareaSeleccionada)
-                .then(res => res.json())
-                .then(tarea => {
-                    if (tarea!=null) {
-                        let cumplir = tarea.cumplida == true ? '<img class="cumplida" src="/img/tildeVerde.png" alt="Cumplida">' : '<img class="cumplida" src="/img/equisRoja.png" alt="NoCumplida">'; 
-                        let tareaAmpliada = `<tr>`+
-                                         //`<input type="number" class="idTarea" value='${tarea.id}' hidden>`+
-                                         `<th scope="row"  class="campoId">${tarea.id}</th>`+
-                                         `<td class="campoNombre">${tarea.nombre} </td>`+
-                                         `<td class="campoDescripcion">${tarea.descripcion} </td>`+   
-                                            `</tr>`;
-                        document.getElementById('tbodyAmpliado').innerHTML = tareaAmpliada;
-                        document.getElementById('tablaAmpliada').classList.remove('invisible');
-                    }             
-                })
-} */

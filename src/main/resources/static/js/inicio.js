@@ -81,18 +81,15 @@ function mostrarTareas(i){ // segun si queremos todas las tareas, cumplidas o in
 
     switch (i) {
         case 0: // Todas las tareas (0)
-            url = "https://taskcontrol.herokuapp.com/tareaRest/"
-            
+            url = "https://taskcontrol.herokuapp.com/tareaRest/";   
             break;
 
         case 1: // Solo tareas cumplidas (1)
-            url = "https://taskcontrol.herokuapp.com/cumplidas/";
-            
+            url = "https://taskcontrol.herokuapp.com/cumplidas/";     
             break;
 
         case 2: // Solo tareas INcumplidas (2)
-            url = "https://taskcontrol.herokuapp.com/incumplidas/";
-            
+            url = "https://taskcontrol.herokuapp.com/incumplidas/"; 
             break;
     
         default:

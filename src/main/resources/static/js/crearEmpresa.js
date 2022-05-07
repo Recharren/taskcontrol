@@ -23,7 +23,7 @@ async function crearEmpresa(nombreEmp,rubroEmp,actividadEmp){
     }
 let idUsuario = document.getElementById('id').value;
 
-  await fetch("http://localhost:8080/empresa", {
+  await fetch("https://taskcontrol.herokuapp.com/empresa", {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',

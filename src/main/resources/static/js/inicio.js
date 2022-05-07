@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     let id = document.getElementById('idSesion').value; // valor del id del usuario en Sesion
     let urlEmp = "https://taskcontrol.herokuapp.com/usuario/empleados/"; // Api devuelve lista de empleados de empresa por id de Lider
-    //let urlEmp = "http://localhost:8080/usuario/empleados/"; // Api devuelve lista de empleados de empresa por id de Lider
     traerDatos(urlEmp,id);
     
     async function traerDatos(urlEmp,id){ // Trae lista de empleados y los inyecta en la Funcion 'usuarioOption'
@@ -83,17 +82,17 @@ function mostrarTareas(i){ // segun si queremos todas las tareas, cumplidas o in
     switch (i) {
         case 0: // Todas las tareas (0)
             url = "https://taskcontrol.herokuapp.com/tareaRest/"
-            //url = "http://localhost:8080/tareaRest/"
+            
             break;
 
         case 1: // Solo tareas cumplidas (1)
             url = "https://taskcontrol.herokuapp.com/cumplidas/";
-            //url = "http://localhost:8080/tareaRest/cumplidas/";
+            
             break;
 
         case 2: // Solo tareas INcumplidas (2)
             url = "https://taskcontrol.herokuapp.com/incumplidas/";
-            //url = "http://localhost:8080/tareaRest/incumplidas/";
+            
             break;
     
         default:
@@ -116,7 +115,7 @@ function traerDatosTareas(url){ // traemos las tareas correspondientes del emple
                         tablaDatos.innerHTML = `<h3>No se encontraron tareas.</h3>`;
                     }               
                 })
-    //fetch(`http://localhost:8080/usuario/${idEmpleado}`)         
+            
     fetch(`https://taskcontrol.herokuapp.com/usuario/${idEmpleado}`) // trae al empleado actual y lo inyecta al Html
                 .then(res => res.json())
                 .then(datos => {
@@ -202,7 +201,7 @@ function asignarClickAcciones(){ // funcion para reasignar las acciones a cada b
 //-----------------------------------AMPLIAR TAREA -----------------------
 
 async function ampliarTarea(idTareaSeleccionada){
-    //await fetch ("http://localhost:8080/tareaRest/tarea/"+idTareaSeleccionada)
+    
     await fetch ("https://taskcontrol.herokuapp.com/tareaRest/tarea/"+idTareaSeleccionada)
                 .then(res => res.json())
                 .then(tarea => {
@@ -222,7 +221,7 @@ document.getElementById('cerrarAmpliada').addEventListener("click",()=>{
 //---------------------- NOTA DE TAREA -------------
 
 async function notaVerCrear(idTarea){
-    //fetch("http://localhost:8080/tareaRest/tarea/"+idTarea)
+    
     fetch("https://taskcontrol.herokuapp.com/tareaRest/tarea/"+idTarea)
     .then(res => res.json())
     .then(tarea => {
@@ -269,7 +268,7 @@ document.getElementById('cerrarCrearTarea').addEventListener("click",()=>{ // ac
 //-------Comprueba si el usuario en sesion es el lider de la empresa, si no lo es, se bloquean funciones ---------------------------------------
 
 async function restringirUsuario(idSesion){ 
-    //await fetch ("http://localhost:8080/usuario/empleados/"+idSesion)
+    
     await fetch ("https://taskcontrol.herokuapp.com/usuario/empleados/"+idSesion)
                     .then(res => res.json())
                     .then(datos => {

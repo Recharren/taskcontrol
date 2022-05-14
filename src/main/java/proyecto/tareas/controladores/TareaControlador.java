@@ -40,7 +40,7 @@ public class TareaControlador { // Controlador encargado de retornar vistas Html
             String error = ex.getMessage();
             modelo.put("error",error);
         }
-        return "redirect:/inicio";
+        return "inicio.html";
     }
 
     //---------------------- Da por cumplida una tarea especificada con su ID y retorna a la vista de inicio ----------------------------------
@@ -48,7 +48,6 @@ public class TareaControlador { // Controlador encargado de retornar vistas Html
     @PreAuthorize("hasAnyRole('LIDER','USUARIO')")
     @GetMapping("/cumplir/{id}")
     public String cumplirTarea(@PathVariable Long id){
-        System.out.printf("EL ID DE LA TAREEEEEEEEEAAAAAAAAAAAAAA ES: "+id);
         try {
             tareaServicio.cumplirTarea(id);
         } catch (Exception ex){

@@ -34,9 +34,9 @@ public class PortalControlador {
     @PreAuthorize("hasAnyRole('LIDER','USUARIO')")
     @GetMapping("/inicio")
 public String inicio(ModelMap modelo){
-        List<Usuario> usuarios = usuarioServicio.ObtenerUsuarios();
-        modelo.put("tarea", new Tarea());
-        modelo.put("usuarios",usuarios);
+//        List<Usuario> usuarios = usuarioServicio.ObtenerUsuarios();
+//        modelo.put("tarea", new Tarea());
+//        modelo.put("usuarios",usuarios);
 return "inicio.html";
 }
 

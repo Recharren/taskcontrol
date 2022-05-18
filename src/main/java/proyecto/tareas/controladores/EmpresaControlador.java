@@ -42,7 +42,6 @@ public class EmpresaControlador {
         @PostMapping("/modificarEmpresa")
         public String modificarEmpresa(ModelMap modelo, @RequestParam Long id,@RequestParam Long idSesion, @RequestParam String nombreEmpr, @RequestParam String rubroEmpr,
                                        @RequestParam String actividadEmpr, @RequestParam MultipartFile archivoUsuario){
-            System.out.println("el id sesion esssssssssss"+idSesion);
             try {
                 empresaServicio.modificarEmpresa(id,nombreEmpr,rubroEmpr,actividadEmpr,archivoUsuario);
             } catch (MiExcepcion ex){

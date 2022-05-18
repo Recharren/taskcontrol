@@ -1,5 +1,6 @@
 'use strict'
-
+const urlServer = "http://localhost:8080";
+//const urlServer = "https://taskcontrol.herokuapp.com";
 
 document.addEventListener('DOMContentLoaded', function () { // codigo a ejecutar una vez que carga la pagina.
     document.getElementById('editarContenedor').classList.add('invisible'); // hace invisible el bloque 'editarContenedor'
@@ -28,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () { // codigo a ejecutar
 //---------------------------------- EDITAR EMPRESA ----------------------------
 
 async function editarEmpresa(idEmp){
-    await fetch("https://taskcontrol.herokuapp.com/empresaRest/"+idEmp).// trae de la BD la empresa segun el ID correspondiente
+    await fetch(urlServer+"/empresaRest/"+idEmp).// trae de la BD la empresa segun el ID correspondiente
         then(res => res.json()).
         then(datos => editarDatosEmpresa(datos));
     document.getElementById('editarEmpresaContenedor').classList.remove('invisible');// hace visible el menu 'editarEmpresa'
@@ -65,8 +66,7 @@ document.getElementById('cerrarEditarEmpresa').addEventListener("click", ()=>{//
 //---------------------------------- EDITAR USUARIO ----------------------------
 
 async function editarUsuario(idEmp){
-    await fetch("https://taskcontrol.herokuapp.com/usuario/"+idEmp).// trae de la BD el usuario segun el ID correspondiente
-    then(res => res.json()).
+    await fetch(urlServer+"/usuario/"+idEmp).// trae de la BD el usuario segun el ID correspondiente
         then(res=> res.json()).
         then(datos => editarDatos(datos));
 
@@ -123,7 +123,7 @@ llenarCantUsuarios(idEmp);
 //----------- la app no permite seguir agregando usuarios, y ofrece la opcion premium (en desarrollo).
 
 async function llenarCantUsuarios(idEmp){
-    await fetch("https://taskcontrol.herokuapp.com/empresaRest/"+idEmp). // busca en la BD la empresa segun ID
+    await fetch(urlServer+"/empresaRest/"+idEmp). // busca en la BD la empresa segun ID
     then(res=> res.json()).
         then(datos => {
             if(datos.cantUsuarios<5){

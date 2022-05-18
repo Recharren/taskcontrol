@@ -1,4 +1,6 @@
 'use strict'
+const urlServer = "http://localhost:8080";
+//const urlServer = "https://taskcontrol.herokuapp.com";
 
 // -------------------------- Acciones a ejecutar cuando se carga el documento HTML---------------------------
 
@@ -13,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         crearTarea();
     })
     let id = document.getElementById('idSesion').value; // valor del id del usuario en Sesion
-    let urlEmp = "https://taskcontrol.herokuapp.com/usuario/empleados/"; // Api devuelve lista de empleados de empresa por id de Lider
+    let urlEmp = urlServer+"/usuario/empleados/"; // Api devuelve lista de empleados de empresa por id de Lider
     traerDatos(urlEmp,id);
     
     async function traerDatos(urlEmp,id){ // Trae lista de empleados y los inyecta en la Funcion 'usuarioOption'
@@ -81,15 +83,15 @@ function mostrarTareas(i){ // segun si queremos todas las tareas, cumplidas o in
 
     switch (i) {
         case 0: // Todas las tareas (0)
-            url = "https://taskcontrol.herokuapp.com/tareaRest/";   
+            url = urlServer+"/tareaRest/";   
             break;
 
         case 1: // Solo tareas cumplidas (1)
-            url = "https://taskcontrol.herokuapp.com/cumplidas/";     
+            url = urlServer+"/cumplidas/";     
             break;
 
         case 2: // Solo tareas INcumplidas (2)
-            url = "https://taskcontrol.herokuapp.com/incumplidas/"; 
+            url = urlServer+"/incumplidas/"; 
             break;
     
         default:
@@ -113,7 +115,7 @@ function traerDatosTareas(url){ // traemos las tareas correspondientes del emple
                     }               
                 })
             
-    fetch(`https://taskcontrol.herokuapp.com/usuario/${idEmpleado}`) // trae al empleado actual y lo inyecta al Html
+    fetch(urlServer+`/usuario/${idEmpleado}`) // trae al empleado actual y lo inyecta al Html
                 .then(res => res.json())
                 .then(datos => {
                     document.getElementById('empleadoActual').innerHTML= datos.nombre;
@@ -199,7 +201,7 @@ function asignarClickAcciones(){ // funcion para reasignar las acciones a cada b
 
 async function ampliarTarea(idTareaSeleccionada){
     
-    await fetch ("https://taskcontrol.herokuapp.com/tareaRest/tarea/"+idTareaSeleccionada)
+    await fetch (urlServer+"/tareaRest/tarea/"+idTareaSeleccionada)
                 .then(res => res.json())
                 .then(tarea => {
                     if (tarea!=null) { 
@@ -219,7 +221,7 @@ document.getElementById('cerrarAmpliada').addEventListener("click",()=>{
 
 async function notaVerCrear(idTarea){
     
-    fetch("https://taskcontrol.herokuapp.com/tareaRest/tarea/"+idTarea)
+    fetch(urlServer+"/tareaRest/tarea/"+idTarea)
     .then(res => res.json())
     .then(tarea => {
         if (tarea.nota!=null) {
@@ -266,7 +268,7 @@ document.getElementById('cerrarCrearTarea').addEventListener("click",()=>{ // ac
 
 async function restringirUsuario(idSesion){ 
     
-    await fetch ("https://taskcontrol.herokuapp.com/usuario/empleados/"+idSesion)
+    await fetch (urlServer+"/usuario/empleados/"+idSesion)
                     .then(res => res.json())
                     .then(datos => {
                         if (datos[0].id != idSesion) {

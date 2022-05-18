@@ -84,17 +84,3 @@ public class TareaControlador { // Controlador encargado de retornar vistas Html
     }
 
 }
-//    //--------- VER TAREAS: BORRAMOS ????????????????-----------------------------------------------------------
-//    @GetMapping("/verTareas")
-//    public String verTareas (ModelMap modelo, @RequestParam Long id) {
-//        try {
-//            /*List<Tarea> tareas = tareaServicio.verTareasPorIdUsuario(tarea.getUsuario().getId());*/
-//            System.out.println("EL NUMERO ID ES: "+id);
-//            List<Tarea> tareas = tareaServicio.verTareasPorIdUsuario(id);
-//            modelo.put("tareas",tareas);
-//        } catch (MiExcepcion ex){
-//            String error = ex.getMessage();
-//            modelo.put("error", error);
-//        }
-//        return "verTareas.html";
-//    }

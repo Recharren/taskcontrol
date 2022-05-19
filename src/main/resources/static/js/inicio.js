@@ -87,11 +87,11 @@ function mostrarTareas(i){ // segun si queremos todas las tareas, cumplidas o in
             break;
 
         case 1: // Solo tareas cumplidas (1)
-            url = urlServer+"/cumplidas/";     
+            url = urlServer+"/tareaRest/cumplidas/";     
             break;
 
         case 2: // Solo tareas INcumplidas (2)
-            url = urlServer+"/incumplidas/"; 
+            url = urlServer+"/tareaRest/incumplidas/"; 
             break;
     
         default:

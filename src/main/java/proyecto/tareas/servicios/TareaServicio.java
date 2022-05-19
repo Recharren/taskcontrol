@@ -2,6 +2,7 @@ package proyecto.tareas.servicios;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import proyecto.tareas.Excepciones.MiExcepcion;
 import proyecto.tareas.entidades.Tarea;
 import proyecto.tareas.entidades.Usuario;
@@ -81,6 +82,7 @@ public class TareaServicio {
         return tareaRepositorio.getById(id);
     }
 
+    @Transactional
     public void cumplirTarea(Long id) {
         Tarea tarea = tareaRepositorio.getById(id);
         tarea.setCumplida(true);

@@ -9,6 +9,5 @@ En el momento que desee puede asignar tareas nuevas como así también eliminarl
 Cuando es creado un usuario "empleado" se le asigna, además de sus datos personales, un email y contraseña que
 le servirán para loguearse en el sistema. Éste tiene a su disposición un menú con las tareas asignadas por su Líder, en el que puede agregar una nota a cada una si fuera necesario y por último dar dicha tarea por cumplida.<br><br>
 La próxima versión 1.2 contará con responsive design para uso adaptado a móviles y funciones adicionales.
-Gracias por utilizar TaskControl. 
-
-Autores: Rodrigo Echarren - Leonardo Moreno 
+Gracias por utilizar TaskControl.<br><br>
+<b>Autor: Rodrigo Echarren </b>
